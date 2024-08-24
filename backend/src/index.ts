@@ -1,6 +1,16 @@
 import express from 'express';
 import cors from 'cors';
 import 'dotenv/config';
+import mongoose from 'mongoose';
+
+
+//Db Conn
+mongoose.connect(process.env.MONGODB_CONNECTION_STRING as string)
+    .then((con) => {
+        console.log(`Db is connected to host ${con.connection.host}`);
+    }).catch((err) => {
+        console.log(err);
+    })
 
 //Initialization Express App
 const app = express();
