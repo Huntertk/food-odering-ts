@@ -2,7 +2,7 @@ import express, {Request, Response} from "express";
 import cors from 'cors';
 import 'dotenv/config';
 import mongoose from "mongoose";
-
+import myUserRoute from './routes/myUserRoute'
 
 //Database connection
 mongoose.connect(process.env.MONGODB_CONNECTION_STRING as string)
@@ -20,9 +20,7 @@ app.use(cors())
 
 
 //Routes
-app.get('/test', async (req:Request, res:Response) => {
-    res.status(200).json({message:"Hello From Test"})
-})
+app.use("/api/my/users", myUserRoute)
 
 //Server Listining
 
