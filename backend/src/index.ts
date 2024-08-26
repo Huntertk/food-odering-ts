@@ -3,6 +3,10 @@ import cors from 'cors';
 import 'dotenv/config';
 import mongoose from 'mongoose';
 
+//Importing Routes
+import myUserRoutes from './routes/MyUserRoute';
+
+
 
 //Db Conn
 mongoose.connect(process.env.MONGODB_CONNECTION_STRING as string)
@@ -28,7 +32,9 @@ app.get('/', (req, res) => {
         success:true,
         message:"Api Running"
     })
-})
+});
+
+app.use('/api/my/user', myUserRoutes);
 
 
 //Server Listen
